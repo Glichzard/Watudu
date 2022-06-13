@@ -33,7 +33,11 @@
   justify-content: space-between;
 }
 .content .create-task {
-  width: 300px;
+  border: 1px solid #ddd;
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  width: 350px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -41,7 +45,7 @@
 .content .create-task span {
   display: block;
 }
-.content .create-task input {
+.content .create-task input, .content .create-task textarea {
   padding: 0.3rem 0.4rem;
   width: 100%;
   border-radius: 3px;
@@ -49,11 +53,16 @@
   border: 1px solid black;
   display: block;
   transition: 0.2s ease;
+  resize: vertical;
+}
+.content .create-task textarea {
+  min-height: 50px;
+  font-size: 0.9rem;
 }
 .content .create-task button {
   border: none;
   padding: 0.5rem;
-  background-color: #3a3a3a;
+  background-color: #598eba;
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -65,6 +74,53 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-right: 0.5rem;
+}
+.content #tasks::-webkit-scrollbar {
+  width: 5px;
+}
+.content #tasks::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: #666;
+}
+.content #tasks::-webkit-scrollbar-thumb:active {
+  background-color: #333;
+}
+.content #tasks .header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  z-index: 1;
+  background-color: #a5a4a4;
+  border-bottom: 1px solid #d9d9d9;
+}
+.content #tasks .header button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.content #tasks .header button i {
+  transition: 0.2s ease;
+  transform: rotateX(0deg);
+}
+.content #tasks .header button i.rotate {
+  transform: rotateX(180deg);
+}
+.content #tasks .header h3 {
+  font-size: 1.2em;
+  text-align: right;
+  border-right: 7px solid #dc3b73;
+  padding-right: 0.5rem;
+}
+.content #tasks h2 {
+  opacity: 0.5;
+  font-weight: 700;
+  font-size: 1rem;
 }
 .content #tasks .task {
   border-radius: 5px;
@@ -87,6 +143,10 @@
   font-size: 0.8rem;
   opacity: 0.5;
   font-weight: 700;
+  margin-left: 1rem;
+  background-color: #fff;
+  padding: 0.2rem;
+  border-radius: 3px;
 }
 .content #tasks .task .top input {
   padding: 0.2rem 0.4rem;
@@ -138,6 +198,65 @@
   border: none;
   outline: none;
   border-radius: 3px;
+  transition: 0.2s ease;
+}
+.content #tasks .task .footer button:hover {
+  background: #fff;
+}
+.content #tasks .task .footer button.green {
+  color: white;
+  background: #74a464;
+}
+.content #tasks .task .footer button.green:hover {
+  background: #73b95c;
+}
+.content #tasks .task .footer button.red {
+  color: white;
+  background: #a94949;
+}
+.content #tasks .task .footer button.red:hover {
+  background: #be4747;
+}
+.content #tasks .task .footer button.yellow {
+  color: white;
+  background: #aea246;
+}
+.content #tasks .task .footer button.yellow:hover {
+  background: #c8c33a;
+}
+.content #tasks details {
+  padding: 1rem;
+  background: #eaeaea;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+.content #tasks details .done-tasks {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.content #tasks details .done-tasks .task.done {
+  background-color: #b7c2fd;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .content #tasks .header {
+    background-color: rgba(125, 125, 125, 0.2392156863);
+    backdrop-filter: blur(18px);
+    -moz-backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    -o-backdrop-filter: blur(18px);
+    -ms-backdsrop-filter: blur(18px);
+  }
+}
+@media (max-width: 800px) {
+  .content {
+    flex-direction: column;
+  }
+  .content .create-task {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

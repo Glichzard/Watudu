@@ -48,18 +48,51 @@ const task = (id = -1, state) => {
 
 document.getElementById("createTask").addEventListener("click", () => task(undefined, false))
 
-const loadTasks = (id = -1) => {
-    console.log("Fui calleado")
+let filtro = "id"
+let orden = "DESC"
+
+const loadTasks = (id = -1, filter, order) => {
+    if(filter != undefined) filtro = filter
+    if(order != undefined) orden = order
+
+    console.log(`el filtro acutal es ${filtro} \n el orden actual es ${orden} \n methods/loadTasks.php?id=${id}&&filter=${filter}&&order=${order}`)
+    
+    let open = false
+    if(typeof(document.getElementById("done-tasks")) != 'undefined' && document.getElementById("done-tasks") != null)
+        if(document.getElementById("done-tasks").parentElement.hasAttribute("open")) open = true
+    
     $.ajax({
-        url: `methods/loadTasks.php?id=${id}`,
+        url: `methods/loadTasks.php?id=${id}&&filter=${filtro}&&order=${orden}`,
         type: "POST",
-        success: (response) => document.getElementById("tasks").innerHTML = response
+        success: (response) => {
+            document.getElementById("tasks").innerHTML = response
+            if(open) document.getElementById("done-tasks").click()
+
+            if(filter === "id" && order === "ASC") document.getElementById("recentIndicator").classList.add("rotate")
+            if(filter === "id" && order === "DESC") document.getElementById("recentIndicator").classList.remove("rotate")
+        }
     })
 }
 
-const deleteTask = id => {
+let recent = 0
+let lastMod = 0
+const sorter = (filter) => {
+    if(filter === "recent") {
+        recent++
+        if(recent > 1) recent = 0
+        loadTasks(undefined, "id", recent ? "ASC" : "DESC")
+    }
+    if(filter === "lastMod") {
+        lastMod++
+        if(lastMod > 1) lastMod = 0
+        loadTasks(undefined, 'lastMod', lastMod ? "ASC" : "DESC")
+    }
+
+}
+
+const actTask = (id, action) => {
     $.ajax({
-        url: `methods/deleteTask.php?id=${id}`,
+        url: `methods/${action}.php?id=${id}`,
         type: "POST",
         success: () => loadTasks()
     })

@@ -18,7 +18,7 @@
 <body>
     <div class="topnav">
         <h1>Watudu AJAX</h1>
-        <span>Version: 1.0</span>
+        <span>Version: 1.2</span>
     </div>
     <div class="content">
         <div class="create-task">
@@ -28,7 +28,7 @@
             </div>
             <div class="add-field">
                 <span>Descripcion</span>
-                <input type="text" id="desc">
+                <textarea type="text" id="desc"></textarea>
             </div>
             <button id="createTask">Añadir</button>
         </div>
