@@ -1,0 +1,81 @@
+nav #navbarNavAltMarkup ul {
+  width: 100%;
+  justify-content: end;
+}
+
+section {
+  display: flex;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+section article {
+  padding: 70px 2rem;
+}
+section article.add-task {
+  min-width: 350px;
+}
+section article.add-task .form-container {
+  position: sticky;
+  top: 70px;
+}
+section article.add-task .form-container button {
+  width: 100%;
+}
+section article.tasks {
+  width: 100%;
+}
+section article.tasks .accordion .card .card-header h5 {
+  display: flex;
+  justify-content: space-between;
+}
+section article.tasks #tasks, section article.tasks #done-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+section article.tasks #tasks .alert, section article.tasks #done-tasks .alert {
+  margin: 0;
+}
+section article.tasks #tasks .card .card-body .card-title, section article.tasks #done-tasks .card .card-body .card-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+section article.tasks #tasks .card .card-body .card-title .badge-container, section article.tasks #done-tasks .card .card-body .card-title .badge-container {
+  display: flex;
+  align-items: center;
+}
+section article.tasks #tasks .card .card-body .task-action, section article.tasks #done-tasks .card .card-body .task-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+section article.tasks #tasks .card .card-body .task-action .date, section article.tasks #done-tasks .card .card-body .task-action .date {
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+
+@media (max-width: 992px) {
+  nav {
+    position: fixed !important;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+  }
+  section {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 50px;
+    width: 100%;
+  }
+  section article {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
