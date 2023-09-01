@@ -36,13 +36,6 @@ CREATE TABLE `tasks` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Volcado de datos para la tabla `tasks`
---
-
-INSERT INTO `tasks` (`id`, `title`, `description`, `urgent`, `done`, `date`) VALUES
-(105, 'A solucionar edición', 'Hacer un \"real template string\" a la inserción y edición de las tareas. Ya que hay caracteres como las comillas que las toma en la sentencia SQL', 'true', 1, '2022-09-05 17:51:11'),
-(107, 'Jucio APT', 'Seguir con los diálogos del juicio', 'false', 0, '2022-09-05 22:27:42');
 
 --
 -- Índices para tablas volcadas
